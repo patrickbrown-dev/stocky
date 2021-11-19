@@ -1,9 +1,13 @@
 const { Client, Intents } = require('discord.js');
+const finnhub = require('finnhub');
 const dotenv = require('dotenv');
 
 dotenv.config();
 const token = process.env.DISCORD_BOT_TOKEN;
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
+const api_key = finnhub.ApiClient.instance.authentications['api_key'];
+api_key.apiKey = process.env.FINNHUB_API_KEY;
+const finnhubClient = new finnhub.DefaultApi();
 
 client.once('ready', () => {
 	console.log('Ready!');
@@ -12,10 +16,16 @@ client.once('ready', () => {
 client.on('interactionCreate', async interaction => {
 	if (!interaction.isCommand()) return;
 
-	const { commandName } = interaction;
+	if (interaction.commandName === 'quote') {
+		const ticker = interaction.options.getString('ticker');
 
-	if (commandName === 'quote') {
-		await interaction.reply('Pong!');
+		finnhubClient.quote(ticker, (_error, data, _response) => {
+			// TODO: I want this "data" ...
+			console.log(data);
+		});
+
+		// ... to be returned here
+		await interaction.reply("PONG");
 	}
 });
 
