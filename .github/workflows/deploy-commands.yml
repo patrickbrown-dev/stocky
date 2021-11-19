@@ -23,4 +23,4 @@ jobs:
           echo DISCORD_BOT_TOKEN=${{ secrets.DISCORD_BOT_TOKEN }} >> .env
           echo DISCORD_BOT_TOKEN=${{ secrets.DISCORD_BOT_TOKEN }} >> .env
           docker build . --file Dockerfile --tag $IMAGE_NAME:latest
-          docker run -it --env-file=.env $IMAGE_NAME:latest node deploy-commands.js
+          docker run -i --env-file=.env $IMAGE_NAME:latest node deploy-commands.js
