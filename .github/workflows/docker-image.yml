@@ -15,4 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+      run: |
+        export TAG=$(date +%s)
+        docker build . --file Dockerfile --tag stocky:$TAG
+        docker push ghcr.io/p16n/stocky:$TAG
