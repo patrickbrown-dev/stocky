@@ -16,8 +16,8 @@ jobs:
       packages: write
 
     steps:
+      - uses: actions/checkout@v2
       - name: Upsert slash commands
-        uses: actions/checkout@v2
         run: |
           echo DISCORD_BOT_TOKEN=${{ secrets.DISCORD_BOT_TOKEN }} >> .env
           echo DISCORD_BOT_TOKEN=${{ secrets.DISCORD_BOT_TOKEN }} >> .env
