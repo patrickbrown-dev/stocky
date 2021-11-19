@@ -1,13 +1,11 @@
-FROM python:3.10-alpine3.13
+FROM node:lts-alpine
 
-ENV PIP_NO_CACHE_DIR false
+WORKDIR /usr/src/stocky
 
-WORKDIR /stocky
+COPY package*.json ./
+
+RUN npm install
 
 COPY . .
 
-RUN apk add git
-RUN pip install pipenv
-RUN pipenv install --system --deploy --ignore-pipfile
-
-CMD ["python", "bot.py"]
+CMD [ "node", "index.js" ]
