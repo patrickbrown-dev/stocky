@@ -1,13 +1,11 @@
-const { Client, Intents } = require('discord.js');
-const finnhub = require('finnhub');
-const dotenv = require('dotenv');
+import { Client, Intents } from 'discord.js';
+import  dotenv from'dotenv';
+import got from 'got';
 
 dotenv.config();
 const token = process.env.DISCORD_BOT_TOKEN;
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
-const api_key = finnhub.ApiClient.instance.authentications['api_key'];
-api_key.apiKey = process.env.FINNHUB_API_KEY;
-const finnhubClient = new finnhub.DefaultApi();
+const finnhub_api_key = process.env.FINNHUB_API_KEY;
 
 client.once('ready', () => {
 	console.log('Ready!');
@@ -19,13 +17,19 @@ client.on('interactionCreate', async interaction => {
 	if (interaction.commandName === 'quote') {
 		const ticker = interaction.options.getString('ticker');
 
-		finnhubClient.quote(ticker, (_error, data, _response) => {
-			// TODO: I want this "data" ...
-			console.log(data);
-		});
-
-		// ... to be returned here
-		await interaction.reply("PONG");
+		await interaction.deferReply()
+		await got.get(`https://finnhub.io/api/v1/quote?symbol=${ticker}&token=${finnhub_api_key}`)
+			.json()
+			.then(json => interaction.editReply(`\`\`\`
+${ticker}
+	Current:    $${json["c"]}
+	Change:     $${json["d"]}
+	% Change:    ${json["dp"]}%
+	High:       $${json["h"]}
+	Low:        $${json["l"]}
+	Open:       $${json["o"]}
+	Prev Close: $${json["pc"]}
+\`\`\``));
 	}
 });
 
