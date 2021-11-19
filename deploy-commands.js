@@ -11,10 +11,17 @@ const guildId = process.env.DISCORD_GUILD_ID;
 const commands = [
     new SlashCommandBuilder()
         .setName('quote')
-        .setDescription('Gets the daily performance of a stock by ticker')
+        .setDescription('Get real-time quote data for US stocks.')
         .addStringOption(option =>
-            option.setName('ticker')
-                .setDescription('The ticker to quote')
+            option.setName('symbol')
+                .setDescription('The symbol to quote')
+                .setRequired(true)),
+    new SlashCommandBuilder()
+        .setName('basic_financials')
+        .setDescription('Get company basic financials such as margin, P/E ratio, 52-week high/low etc.')
+        .addStringOption(option =>
+            option.setName('symbol')
+                .setDescription('The symbol to quote')
                 .setRequired(true)),
 ].map(command => command.toJSON());
 
