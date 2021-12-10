@@ -1,12 +1,12 @@
 {
   "name": "stocky",
-  "version": "0.0.2",
+  "version": "0.0.6",
   "lockfileVersion": 2,
   "requires": true,
   "packages": {
     "": {
       "name": "stocky",
-      "version": "0.0.2",
+      "version": "0.0.6",
       "license": "ISC",
       "dependencies": {
         "@discordjs/builders": "^0.7.0",
@@ -17,7 +17,8 @@
         "finnhub": "^1.2.7"
       },
       "devDependencies": {
-        "eslint": "^8.2.0"
+        "eslint": "^8.2.0",
+        "typescript": "^4.5.3"
       }
     },
     "node_modules/@babel/cli": {
@@ -2266,6 +2267,19 @@
         "url": "https://github.com/sponsors/sindresorhus"
       }
     },
+    "node_modules/typescript": {
+      "version": "4.5.3",
+      "resolved": "https://registry.npmjs.org/typescript/-/typescript-4.5.3.tgz",
+      "integrity": "sha512-eVYaEHALSt+s9LbvgEv4Ef+Tdq7hBiIZgii12xXJnukryt3pMgJf6aKhoCZ3FWQsu6sydEnkg11fYXLzhLBjeQ==",
+      "dev": true,
+      "bin": {
+        "tsc": "bin/tsc",
+        "tsserver": "bin/tsserver"
+      },
+      "engines": {
+        "node": ">=4.2.0"
+      }
+    },
     "node_modules/uri-js": {
       "version": "4.4.1",
       "resolved": "https://registry.npmjs.org/uri-js/-/uri-js-4.4.1.tgz",
@@ -4027,6 +4041,12 @@
       "version": "1.4.0",
       "resolved": "https://registry.npmjs.org/type-fest/-/type-fest-1.4.0.tgz",
       "integrity": "sha512-yGSza74xk0UG8k+pLh5oeoYirvIiWo5t0/o3zHHAO2tRDiZcxWP7fywNlXhqb6/r6sWvwi+RsyQMWhVLe4BVuA=="
+    },
+    "typescript": {
+      "version": "4.5.3",
+      "resolved": "https://registry.npmjs.org/typescript/-/typescript-4.5.3.tgz",
+      "integrity": "sha512-eVYaEHALSt+s9LbvgEv4Ef+Tdq7hBiIZgii12xXJnukryt3pMgJf6aKhoCZ3FWQsu6sydEnkg11fYXLzhLBjeQ==",
+      "dev": true
     },
     "uri-js": {
       "version": "4.4.1",
