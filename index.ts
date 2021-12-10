@@ -19,7 +19,7 @@ commandRouter.register('basic_financials', new BasicFinancialsHandler(finnhubCli
 client.once('ready', () => console.log('Ready!'));
 
 client.on('interactionCreate', async interaction => {
-	if (!interaction.isCommand()) return
+	if (!interaction.isCommand()) return;
 	commandRouter.route(interaction.commandName, interaction);
 });
 
