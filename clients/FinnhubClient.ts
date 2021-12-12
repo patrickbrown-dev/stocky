@@ -6,13 +6,8 @@ export class FinnhubClient {
     apiKey: string;
     baseURI: string = 'https://finnhub.io/api/v1';
 
-    constructor() {
-        const maybeAPIKey = process.env.FINNHUB_API_KEY;
-        if (maybeAPIKey === undefined) {
-            console.error('Finnhub API Key is undefined');
-            throw new Error('Finnhub API Key is undefined');
-        }
-        this.apiKey = maybeAPIKey;
+    constructor(apiKey: string) {
+        this.apiKey = apiKey;
     }
 
     async getQuote(symbol: string): Promise<Quote> {
