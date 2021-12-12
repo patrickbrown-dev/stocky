@@ -9,7 +9,7 @@ import { Configuration } from './Configuration';
 dotenv.config();
 const configuration = Configuration.getInstance();
 const discordClient = new Client({ intents: [Intents.FLAGS.GUILDS] });
-const finnhubClient = new FinnhubClient(configuration.discordBotToken);
+const finnhubClient = new FinnhubClient(configuration.finnhubAPIKey);
 const commandRouter = new CommandRouter();
 
 commandRouter.register('quote', new QuoteHandler(finnhubClient));
