@@ -1,6 +1,6 @@
 import { Client, Intents, MessageEmbed } from 'discord.js';
 import dotenv from 'dotenv';
-import finnhub from 'finnhub';
+import { FinnhubClient } from './clients/FinnhubClient';
 import { CommandRouter } from './CommandRouter';
 import { BasicFinancialsHandler } from './handlers/BasicFinancialsHandler';
 import { QuoteHandler } from './handlers/QuoteHandler';
@@ -8,8 +8,7 @@ import { QuoteHandler } from './handlers/QuoteHandler';
 dotenv.config();
 const token = process.env.DISCORD_BOT_TOKEN;
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
-finnhub.ApiClient.instance.authentications['api_key'] = process.env.FINNHUB_API_KEY;
-const finnhubClient = new finnhub.DefaultApi()
+const finnhubClient = new FinnhubClient();
 const commandRouter = new CommandRouter();
 
 commandRouter.register('quote', new QuoteHandler(finnhubClient));

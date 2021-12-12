@@ -18,19 +18,22 @@ export class BasicFinancialsHandler implements CommandHandler {
         symbol = symbol.toUpperCase();
 
         await interaction.deferReply()
-        let i = interaction;
-        this.finnhubClient.companyBasicFinancials(symbol, 'all', (_: any, data: any) => {
-            const embed = new MessageEmbed()
-                .setColor(StockyGreen)
-                .setTitle(`${symbol} Basic Finanicals`)
-                .setDescription(`Here are some ${symbol}'s financials such as 52-week high/low.`)
-                .addFields(
-                    { name: '10 Day Average Trading Volume', value: `${data.metric["10DayAverageTradingVolume"]}` },
-                    { name: '52 Week High', value: `$${data.metric["52WeekHigh"]}`, inline: true },
-                    { name: '52 Week Low', value: `$${data.metric["52WeekLow"]}`, inline: true },
-                    { name: '52 Week Price Return Daily', value: `$${data.metric["52WeekPriceReturnDaily"]}` },
-                );
-            i.editReply({embeds: [embed]});
-        });
+
+        const basicFinancials = await this.finnhubClient.getBasicFinancials(symbol);
+
+        const embed = new MessageEmbed()
+            .setColor(StockyGreen)
+            .setTitle(`${symbol} Basic Finanicals`)
+            .setDescription(`Here are some ${symbol}'s financials such as 52-week high/low.`)
+            .addFields(
+                { name: '10 Day Average Trading Volume', value: `$${basicFinancials.tenDayAverageTradingVolume}` },
+                { name: '52 Week High', value: `$${basicFinancials.fiftyTwoWeekHigh}`, inline: true },
+                { name: '52 Week Low', value: `$${basicFinancials.fiftyTwoWeekLow}`, inline: true },
+                { name: '52 Week Low Date', value: `${basicFinancials.fiftyTwoWeekLowDate}` },
+                { name: '52 Week Price Return Daily', value: `$${basicFinancials.fiftyTwoWeekPriceReturnDaily}`, inline: true },
+                { name: 'beta', value: `${basicFinancials.beta}`, inline: true },
+            );
+
+        interaction.editReply({ embeds: [embed] });
     }
 }
