@@ -8,4 +8,6 @@ RUN npm install
 
 COPY . .
 
-CMD [ "node", "index.js" ]
+RUN npx tsc
+
+CMD [ "node", "target/index.js" ]
