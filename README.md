@@ -11,7 +11,7 @@ Stocky is a little Discord bot that knows about stocks.
 **Stocky is now available for the public!** Simply click on the following link
 and authorize him to the server of your choosing.
 
-https://discord.com/api/oauth2/authorize?client_id=905504527418003486&scope=applications.commands
+[https://discord.com/api/oauth2/authorize?client_id=905504527418003486&scope=applications.commands](https://discord.com/api/oauth2/authorize?client_id=905504527418003486&scope=applications.commands)
 
 ## Development
 
