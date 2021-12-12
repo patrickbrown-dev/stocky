@@ -1,6 +1,6 @@
 {
   "name": "stocky",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "A Discord bot for getting info on stocks",
   "main": "index.js",
   "scripts": {
