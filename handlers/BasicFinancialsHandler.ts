@@ -1,11 +1,12 @@
 import { CommandInteraction, MessageEmbed } from "discord.js";
+import { FinnhubClient } from "../clients/FinnhubClient";
 import { CommandHandler } from "./CommandHandler";
 import { StockyGreen } from "./HandlerHelpers";
 
 export class BasicFinancialsHandler implements CommandHandler {
-    finnhubClient: any;
+    finnhubClient: FinnhubClient;
 
-    constructor(finnhubClient: any) {
+    constructor(finnhubClient: FinnhubClient) {
         this.finnhubClient = finnhubClient;
     }
 

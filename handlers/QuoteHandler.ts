@@ -4,7 +4,7 @@ import { CommandHandler } from "./CommandHandler";
 import { StockyGreen } from "./HandlerHelpers";
 
 export class QuoteHandler implements CommandHandler {
-    finnhubClient: any;
+    finnhubClient: FinnhubClient;
 
     constructor(finnhubClient: FinnhubClient) {
         this.finnhubClient = finnhubClient;
