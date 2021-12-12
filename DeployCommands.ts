@@ -6,7 +6,6 @@ import dotenv from 'dotenv';
 dotenv.config();
 const token = process.env.DISCORD_BOT_TOKEN;
 const clientId = process.env.DISCORD_CLIENT_ID;
-const guildId = process.env.DISCORD_GUILD_ID;
 
 if (token === undefined) {
     throw new Error('DISCORD_BOT_TOKEN is undefined');
@@ -14,10 +13,6 @@ if (token === undefined) {
 
 if (clientId === undefined) {
     throw new Error('DISCORD_CLIENT_ID is undefined');
-}
-
-if (guildId === undefined) {
-    throw new Error('DISCORD_GUILD_ID is undefined');
 }
 
 const commands = [
