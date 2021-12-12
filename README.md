@@ -8,15 +8,19 @@ Stocky is a little Discord bot that knows about stocks.
 
 ## Installation
 
-At the moment the version of this bot I host isn't publicly available. In the meantime, you could do the following:
+**Stocky is now available for the public!** Simply click on the following link
+and authorize him to the server of your choosing.
+
+https://discord.com/api/oauth2/authorize?client_id=905504527418003486&scope=applications.commands
+
+## Development
 
 1. Create your bot in the [Discord Developer Portal][discord_dev_portal].
 2. Generate an API key from [FinnHub][finnhub].
-3. Populate `k8s/secrets.yml` with the secrets from your Discord Bot, desired Discord server, and FinnHub.
-4. Run the `deploy-commands.yml` script (you'll need to set secrets as Environment Variables or use a `.env` file).
-5. Apply `k8s/stocky.yml` and `k8s/secrets.yml` to your Kubernetes cluster.
-
-In the future, adding Stocky to your Discord Server will be as simple as clicking a link and granting him permissions.
+3. Populate `.env` with the secrets from your Discord Bot and FinnHub. Use `.env_example` for help.
+4. Build the docker image: `docker build . --file Dockerfile --tag stocky:latest`
+5. Run the `DeployCommands` script: `docker run -i --env-file=.env stocky:latest node target/DeployCommands.js`
+6. Run Stocky in docker: `docker run --env-file=.env stocky:latest`
 
 ## Usage
 
@@ -24,7 +28,6 @@ In the future, adding Stocky to your Discord Server will be as simple as clickin
 * `/basic_financials SYMBOL`: Get company basic financials such as margin, P/E ratio, 52-week high/low etc.
 
 Don't see a command you want? I accept PRs!
-
 
 
 [finnhub]: https://finnhub.io
