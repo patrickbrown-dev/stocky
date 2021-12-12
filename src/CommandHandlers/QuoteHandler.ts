@@ -1,5 +1,5 @@
 import { CommandInteraction, MessageEmbed } from "discord.js";
-import { FinnhubClient } from "../clients/FinnhubClient";
+import { FinnhubClient } from "../FinnhubClient/FinnhubClient";
 import { CommandHandler } from "./CommandHandler";
 import { StockyGreen } from "./HandlerHelpers";
 

@@ -1,21 +1,15 @@
 import { Client, Intents } from 'discord.js';
 import dotenv from 'dotenv';
-import { FinnhubClient } from './clients/FinnhubClient';
+import { FinnhubClient } from './FinnhubClient/FinnhubClient';
 import { CommandRouter } from './CommandRouter';
-import { BasicFinancialsHandler } from './handlers/BasicFinancialsHandler';
-import { QuoteHandler } from './handlers/QuoteHandler';
+import { BasicFinancialsHandler } from './CommandHandlers/BasicFinancialsHandler';
+import { QuoteHandler } from './CommandHandlers/QuoteHandler';
+import { Configuration } from './Configuration';
 
 dotenv.config();
-const discordBotToken = process.env.DISCORD_BOT_TOKEN;
-if (discordBotToken === undefined) {
-	throw Error("Discord Bot Token undefined");
-}
+const configuration = Configuration.getInstance();
 const discordClient = new Client({ intents: [Intents.FLAGS.GUILDS] });
-const finnhubAPIKey = process.env.FINNHUB_API_KEY;
-if (finnhubAPIKey === undefined) {
-	throw Error("Finnhub API Key undefined");
-}
-const finnhubClient = new FinnhubClient(finnhubAPIKey);
+const finnhubClient = new FinnhubClient(configuration.discordBotToken);
 const commandRouter = new CommandRouter();
 
 commandRouter.register('quote', new QuoteHandler(finnhubClient));
@@ -28,4 +22,4 @@ discordClient.on('interactionCreate', async interaction => {
 	commandRouter.route(interaction.commandName, interaction);
 });
 
-discordClient.login(discordBotToken);
+discordClient.login(configuration.discordBotToken);

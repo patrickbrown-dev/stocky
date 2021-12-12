@@ -1,5 +1,5 @@
 import { CommandInteraction } from "discord.js";
-import { CommandHandler } from "./handlers/CommandHandler";
+import { CommandHandler } from "./CommandHandlers/CommandHandler";
 
 export class CommandRouter {
     commands: Map<string, CommandHandler> = new Map<string, CommandHandler>();
