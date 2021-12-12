@@ -8,6 +8,18 @@ const token = process.env.DISCORD_BOT_TOKEN;
 const clientId = process.env.DISCORD_CLIENT_ID;
 const guildId = process.env.DISCORD_GUILD_ID;
 
+if (token === undefined) {
+    throw new Error('DISCORD_BOT_TOKEN is undefined');
+}
+
+if (clientId === undefined) {
+    throw new Error('DISCORD_CLIENT_ID is undefined');
+}
+
+if (guildId === undefined) {
+    throw new Error('DISCORD_GUILD_ID is undefined');
+}
+
 const commands = [
     new SlashCommandBuilder()
         .setName('quote')
@@ -27,6 +39,6 @@ const commands = [
 
 const rest = new REST({ version: '9' }).setToken(token);
 
-rest.put(Routes.applicationGuildCommands(clientId, guildId), { body: commands })
+rest.put(Routes.applicationCommands(clientId), { body: commands })
     .then(() => console.log('Successfully registered application commands.'))
     .catch(console.error);
