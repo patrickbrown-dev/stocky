@@ -1,5 +1,6 @@
 import { CommandInteraction, MessageEmbed } from "discord.js";
 import { CommandHandler } from "./CommandHandler";
+import { StockyGreen } from "./HandlerHelpers";
 
 export class BasicFinancialsHandler implements CommandHandler {
     finnhubClient: any;
@@ -18,9 +19,9 @@ export class BasicFinancialsHandler implements CommandHandler {
 
         await interaction.deferReply()
         let i = interaction;
-        this.finnhubClient.companyBasicFinancials(symbol, 'all', (_e: any, data: any, _r: any) => {
+        this.finnhubClient.companyBasicFinancials(symbol, 'all', (_: any, data: any) => {
             const embed = new MessageEmbed()
-                .setColor('#3ba55c')
+                .setColor(StockyGreen)
                 .setTitle(`${symbol} Basic Finanicals`)
                 .setDescription(`Here are some ${symbol}'s financials such as 52-week high/low.`)
                 .addFields(

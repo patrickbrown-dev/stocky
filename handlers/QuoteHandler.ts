@@ -1,5 +1,6 @@
 import { CommandInteraction, MessageEmbed } from "discord.js";
 import { CommandHandler } from "./CommandHandler";
+import { StockyGreen } from "./HandlerHelpers";
 
 export class QuoteHandler implements CommandHandler {
     finnhubClient: any;
@@ -20,7 +21,7 @@ export class QuoteHandler implements CommandHandler {
         let i = interaction;
         this.finnhubClient.quote(symbol, (_e: any, data: any, _r: any) => {
             const embed = new MessageEmbed()
-                .setColor('#3ba55c')
+                .setColor(StockyGreen)
                 .setTitle(`${symbol} Quote`)
                 .setDescription(`Here is how ${symbol} has been performing today.`)
                 .addFields(
