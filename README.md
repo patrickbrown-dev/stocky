@@ -1,6 +1,6 @@
 # Stocky
 
-[![CodeQL](https://github.com/p16n/stocky/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/p16n/stocky/actions/workflows/codeql-analysis.yml)[![Create and publish a Docker image](https://github.com/p16n/stocky/actions/workflows/docker-image.yml/badge.svg)](https://github.com/p16n/stocky/actions/workflows/docker-image.yml)[![Upsert slash commands for Discord bot](https://github.com/p16n/stocky/actions/workflows/deploy-commands.yml/badge.svg)](https://github.com/p16n/stocky/actions/workflows/deploy-commands.yml)
+[![CodeQL](https://github.com/p16n/stocky/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/p16n/stocky/actions/workflows/codeql-analysis.yml) [![Create and publish a Docker image](https://github.com/p16n/stocky/actions/workflows/docker-image.yml/badge.svg)](https://github.com/p16n/stocky/actions/workflows/docker-image.yml) [![Upsert slash commands for Discord bot](https://github.com/p16n/stocky/actions/workflows/deploy-commands.yml/badge.svg)](https://github.com/p16n/stocky/actions/workflows/deploy-commands.yml)
 
 ![Image of Mr. Stocky himself](./stocky.png)
 
