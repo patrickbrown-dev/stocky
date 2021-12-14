@@ -1,4 +1,4 @@
-name: Upsert Discord slash commands (Canary)
+name: Canary Deployment
 
 on:
   push:
