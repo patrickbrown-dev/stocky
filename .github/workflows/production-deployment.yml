@@ -22,5 +22,6 @@ jobs:
         run: |
           echo DISCORD_BOT_TOKEN=${{ secrets.DISCORD_BOT_TOKEN }} >> .env
           echo DISCORD_CLIENT_ID=${{ secrets.DISCORD_CLIENT_ID }} >> .env
+          echo FINNHUB_API_KEY=${{ secrets.FINNHUB_API_KEY }} >> .env
           docker build . --file Dockerfile --tag $IMAGE_NAME:latest
           docker run -i --env-file=.env $IMAGE_NAME:latest node target/DeployCommands.js
