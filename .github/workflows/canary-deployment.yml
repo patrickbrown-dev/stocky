@@ -25,3 +25,18 @@ jobs:
           echo FINNHUB_API_KEY=${{ secrets.FINNHUB_API_KEY }} >> .env
           docker build . --file Dockerfile --tag $IMAGE_NAME:latest
           docker run -i --env-file=.env $IMAGE_NAME:latest node target/DeployCommands.js
+
+  deploy-k8s:
+    runs-on: ubuntu-latest
+    environment: canary
+    permissions:
+      contents: read
+
+    steps:
+      - uses: Azure/k8s-set-context@v1
+        with:
+          kubeconfig: ${{ secrets.KUBE_CONFIG }}
+      - uses: Azure/k8s-deploy@v1.4
+        with:
+          manifests: |
+            k8s/canary/deployment.yml
