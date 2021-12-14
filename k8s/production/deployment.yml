@@ -24,6 +24,11 @@ spec:
             secretKeyRef:
               name: stocky-secrets
               key: discord_bot_token
+        - name: DISCORD_CLIENT_ID
+          valueFrom:
+            secretKeyRef:
+              name: stocky-secrets
+              key: discord_client_id
         - name: FINNHUB_API_KEY
           valueFrom:
             secretKeyRef:
