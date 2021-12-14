@@ -1,12 +1,10 @@
 import { Client, Intents } from 'discord.js';
-import dotenv from 'dotenv';
 import { FinnhubClient } from './FinnhubClient/FinnhubClient';
 import { CommandRouter } from './CommandRouter';
 import { BasicFinancialsHandler } from './CommandHandlers/BasicFinancialsHandler';
 import { QuoteHandler } from './CommandHandlers/QuoteHandler';
 import { Configuration } from './Configuration';
 
-dotenv.config();
 const configuration = Configuration.getInstance();
 const discordClient = new Client({ intents: [Intents.FLAGS.GUILDS] });
 const finnhubClient = new FinnhubClient(configuration.finnhubAPIKey);
