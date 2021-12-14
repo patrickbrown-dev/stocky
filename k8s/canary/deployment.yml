@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: stocky-deployment
+  namespace: stocky-canary
+  labels:
+    app: stocky
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: stocky
+  template:
+    metadata:
+      labels:
+        app: stocky
+    spec:
+      containers:
+      - name: stocky
+        image: ghcr.io/p16n/stocky:main
+        imagePullPolicy: Always
+        env:
+        - name: DISCORD_BOT_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: stocky-secrets
+              key: discord_bot_token
+        - name: FINNHUB_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: stocky-secrets
+              key: finnhub_api_key

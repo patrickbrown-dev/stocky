@@ -1,16 +1,17 @@
-name: Upsert slash commands for Discord bot
+name: Upsert Discord slash commands (Canary)
 
 on:
-  release:
-    types: [published]
+  push:
+    branches: [main]
 
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
-  build-and-push-image:
+  upsert-discord-commands:
     runs-on: ubuntu-latest
+    environment: canary
     permissions:
       contents: read
       packages: write

@@ -1,0 +1,26 @@
+name: Upsert Discord slash commands (Production)
+
+on:
+  release:
+    types: [published]
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  upsert-discord-commands:
+    runs-on: ubuntu-latest
+    environment: production
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Upsert slash commands
+        run: |
+          echo DISCORD_BOT_TOKEN=${{ secrets.DISCORD_BOT_TOKEN }} >> .env
+          echo DISCORD_CLIENT_ID=${{ secrets.DISCORD_CLIENT_ID }} >> .env
+          docker build . --file Dockerfile --tag $IMAGE_NAME:latest
+          docker run -i --env-file=.env $IMAGE_NAME:latest node target/DeployCommands.js
