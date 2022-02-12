@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: stocky
-        image: ghcr.io/p16n/stocky:v0.0.10
+        image: ghcr.io/pdb64/stocky:v0.0.10
         env:
         - name: DISCORD_BOT_TOKEN
           valueFrom:

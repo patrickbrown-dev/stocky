@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/p16n/stocky.git"
+    "url": "git+https://github.com/pdb64/stocky.git"
   },
   "author": "Patrick Brown",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/p16n/stocky/issues"
+    "url": "https://github.com/pdb64/stocky/issues"
   },
-  "homepage": "https://github.com/p16n/stocky#readme",
+  "homepage": "https://github.com/pdb64/stocky#readme",
   "dependencies": {
     "@discordjs/builders": "^0.7.0",
     "@discordjs/rest": "^0.1.0-canary.0",

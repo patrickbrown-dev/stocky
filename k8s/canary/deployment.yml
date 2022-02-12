@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: stocky
-        image: ghcr.io/p16n/stocky:main
+        image: ghcr.io/pdb64/stocky:main
         imagePullPolicy: Always
         env:
         - name: DISCORD_BOT_TOKEN
