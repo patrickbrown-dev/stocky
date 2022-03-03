@@ -1,12 +1,12 @@
 {
   "name": "stocky",
-  "version": "0.0.6",
+  "version": "0.0.11",
   "lockfileVersion": 2,
   "requires": true,
   "packages": {
     "": {
       "name": "stocky",
-      "version": "0.0.6",
+      "version": "0.0.11",
       "license": "ISC",
       "dependencies": {
         "@discordjs/builders": "^0.7.0",
