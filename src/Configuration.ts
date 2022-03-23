@@ -18,7 +18,7 @@ export class Configuration {
         if (discordClientId === undefined) {
             throw Error("DISCORD_CLIENT_ID undefined");
         }
-        this.discordClientId = discordBotToken;
+        this.discordClientId = discordClientId;
 
         const finnhubAPIKey = process.env.FINNHUB_API_KEY;
         if (finnhubAPIKey === undefined) {
